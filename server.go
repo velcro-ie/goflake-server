@@ -4,13 +4,15 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"os"
 	"strconv"
 
 	"github.com/bstick12/goflake"
 	"github.com/gorilla/mux"
 )
 
-var generator = goflake.GoFlakeInstanceUsingUnique("D01Z01")
+var key = os.Getenv("KEYBASE")
+var generator = goflake.GoFlakeInstanceUsingUnique(key)
 
 func main() {
 	startServer()
